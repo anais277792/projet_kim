@@ -1,0 +1,45 @@
+<h1>Users#new</h1>
+<p>Find me in app/views/users/new.html.erb</p>
+<h1>New Utilisateur</h1>
+
+<%= render 'form', utilisateur: @utilisateur %>
+
+<%= link_to 'Back', utilisateurs_path %>
+<% user_id = rand(User.first.id..User.last.id) %>
+
+
+
+
+<%= form_with(model: utilisateur, local: true) do |form| %>
+  <% if utilisateur.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(utilisateur.errors.count, "error") %> prohibited this utilisateur from being saved:</h2>
+
+      <ul>
+      <% utilisateur.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Age %>
+    <%= form.check_box :Age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :City %>
+    <%= form.text_field :City %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Name %>
+    <%= form.text_field :Name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
